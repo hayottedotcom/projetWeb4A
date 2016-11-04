@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Aux bonnes de recettes de l'Est</title>	
+
+    <!-- Lien vers CSS Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Lien vers Thème CSS -->
+    <link href="/css/auxBonnesRecettes.css" rel="stylesheet">
+    
+    
+
+    <!-- Lien vers Google polices -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+     
+    <!-- Barre de Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">Aux bonnes recettes de l'Est</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                
+                <!-- Bouton ajout recette-->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Ajouter une recette
+                </button>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page d'entête -->
+    <header class="intro-header" style="background-image: url('/img/bretzel.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h3>Un site de recettes originales, traditionelles de l'Est de la France</h3>
+                        <hr class="small">
+                        <span class="subheading">Venez partager nos recettes traditionnelles d'Alsace et de Lorraine avec des internautes curieux de découvrir les plats typiques de nos régions.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <div class="container" tabindex="-1">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+            
+            <!-- Modal d'ajout recette -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Aux bonnes recettes de l'Est</h4>
+          </div>
+          <div class="modal-body">
+                <form id="loginForm" class="form-horizontal" method="POST" action="/upload" enctype="multipart/form-data">
+                   <div class="box-modal">
+                    <h2 style="text-align:center;">Ajouter une nouvelle recette</h2>
+
+              <div class="form-group">
+                <label for="taperAuteur">Entrer un Pseudo</label>
+                <input type="text" class="form-control" name="typePseudo" placeholder="Entrer un Pseudo" required="required">
+              </div>
+              <div class="form-group">
+                <label for="taperNom">Nom de la spécialité</label>
+                <input type="text" class="form-control" name="typeName" placeholder="Entrer un nom de spécialité" required>
+              </div>
+              <div class="form-group">
+                <label for="choisirRegion">Choisir une région</label>
+                <select class="form-control" name="choiseRegion">
+                  <option>Alsace</option>
+                  <option>Lorraine</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="taperDecription">Description</label>
+                <textarea class="form-control" name="typeDesc" rows="2" placeholder="Entrer une courte description" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="taperRecette">Recette</label>
+                <textarea class="form-control" name="typeR" rows="8" placeholder="Entrer la recette" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="EnvoyerImage">Importer une image</label>
+                <input type="file" class="form-control-file" name="newfile" aria-describedby="fileHelp" required>
+                <small id="fileHelp" class="form-text text-muted">Il est préférable d'importer une image décrivant visuellement la spécialité.</small>
+              </div>
+              <div class="form-group" style="text-align: center; margin-top:40px;">
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+              </div>
+
+            </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Checkbox Afficher un seul ou tous les articles -->
+    <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                 <label><input type="checkbox" id="cboxShowAll" value="checkboxArticles"> Afficher tous les articles</label>
+          </div>
+    </div>        
+      
+    <!-- Affichage du premier article -->        
+    <div class="post-preview">
+	    <div id="imgDiv" style="background-image:url('/img/upload/<?= htmlspecialchars($articles[0]->img); ?>');
+	     background-size:100% 100%; background-repeat:no-repeat;"></div>
+                 <a data-toggle="modal" data-target="#affichageModal" onclick="affichageRecette('<?= htmlspecialchars($articles[0]->name); ?>','<?= htmlspecialchars($articles[0]->recette); ?>','<?= htmlspecialchars($articles[0]->img); ?>')">
+		
+                 <h2 class="post-title">
+                    <?= htmlspecialchars($articles[0]->name); ?>
+                 </h2>
+                 <h3 class="post-subtitle">
+                    <?= htmlspecialchars($articles[0]->description); ?>
+	         </h3>
+                 </a>
+	         <p class="post-meta">Posté par <a href="#"><?= htmlspecialchars($articles[0]->createur); ?></a> le <?= htmlspecialchars($articles[0]->created_at); ?></p>
+                    </div>
+		    <div><form action="/delete/<?= htmlspecialchars($articles[0]->id); ?>" method="GET">
+			    <input class="btn btn-primary btn-lg" type="submit" value="Supprimer"></input>
+                            <button class="btn btn-primary btn-lg" type="button" onclick="modif(<?= htmlspecialchars($articles[0]->id); ?>,'<?= htmlspecialchars($articles[0]->name); ?>','<?= htmlspecialchars($articles[0]->description); ?>','<?= htmlspecialchars($articles[0]->recette); ?>')" id="btModif">Modifier</button>
+    </div>
+    </form>
+		
+   <br>
+    
+    <!-- Boucle PHP permettant de parcourir tous les autres art -->        
+    <?php
+    foreach ($articles as $article) 
+	if($article->id!=$articles[0]->id){
+    {?>
+ 	     
+                
+    <div class="post-preview showAll" style="display:none;">
+		<div id="imgDiv" style="background-image:url('/img/upload/<?= htmlspecialchars($article->img); ?>');
+ background-size:100% 100%; background-repeat:no-repeat;"></div>
+                    <a data-toggle="modal" data-target="#affichageModal" onclick="affichageRecette('<?= htmlspecialchars($article->name); ?>','<?= htmlspecialchars($article->recette); ?>','<?= htmlspecialchars($article->img); ?>')">
+			
+                        <h2 class="post-title">
+                           <?= htmlspecialchars($article->name); ?>
+                        </h2>
+                        <h3 class="post-subtitle">
+                            <?= htmlspecialchars($article->description); ?>
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posté par <a href="#"><?= htmlspecialchars($article->createur); ?></a> le <?= htmlspecialchars($article->created_at); ?></p>
+              
+		<form action="/delete/<?= htmlspecialchars($article->id); ?>" method="GET">
+			<input class="btn btn-primary btn-lg" type="submit" value="Supprimer"></input>
+                        <button class="btn btn-primary btn-lg" type="button" onclick="modif(<?= htmlspecialchars($article->id); ?>,'<?= htmlspecialchars($article->name); ?>','<?= htmlspecialchars($article->description); ?>','<?= htmlspecialchars($article->recette); ?>')" id="btModif">Modifier</button>
+		</form>
+
+                </div>
+				
+		<br>
+		
+		<?php }} ?>
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal affichage recette -->
+    <div class="modal fade" id="affichageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="titreRecette"></h4>
+          </div>
+          <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                    <div id="afficheImgDiv"></div>
+                    <div id="afficheContent">
+                        <p id="textRecette"></p>
+                    </div>
+                    </div>
+                </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Revenir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal de modification d'un article -->
+    <div class="modal fade" id="modifModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Aux bonnes recettes de l'Est</h4>
+          </div>
+          <div class="modal-body">
+                <form id="modifForm" class="form-horizontal" method="POST" enctype="multipart/form-data" action="get_action()">
+                   <div class="box-modal">
+                    <h2 style="text-align:center;">Modifier une recette</h2>
+
+              
+              <div class="form-group">
+                <label for="taperNom">Nom de la spécialité</label>
+                <input type="text" class="form-control" id="typeName" name="typeName" placeholder="Entrer un nom de spécialité">
+              </div>
+	      <div class="form-group">
+                <label for="choisirRegion">Choisir une région</label>
+                <select class="form-control" name="choiseRegion">
+                  <option>Alsace</option>
+                  <option>Lorraine</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="taperDecription">Description</label>
+                <textarea class="form-control" id="typeDesc" name="typeDesc" rows="2" placeholder="Entrer une courte description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="taperRecette">Recette</label>
+                <textarea class="form-control" id="typeR" name="typeR" rows="8" placeholder="Entrer la recette"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="EnvoyerImage">Modifier l'image</label>
+                <input type="file" class="form-control-file" name="newfile" aria-describedby="fileHelp">
+                <small id="fileHelp" class="form-text text-muted">Il est préférable d'importer une image décrivant visuellement la spécialité.</small>
+              </div>
+              <div class="form-group" style="text-align: center; margin-top:40px;">
+                <button type="submit" class="btn btn-primary">Modifier</button>
+              </div>
+
+            </div>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p class="copyright text-muted">Site crée par COSSON Florent et HAYOTTE Adrien</p>
+		    <p style="margin:0px;" class="copyright text-muted">&copy; 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lien vers jQuery	 -->
+    <script src="/js/jquery.min.js"></script>
+
+    <!-- Lien vers Bootstrap JS -->
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- Lien vers Modal -->
+    <script src="/js/jqBootstrapValidation.js"></script>
+
+    <!-- Lien vers JS auxBonnesRecettes -->
+    <script src="/js/auxBonnesRecettes.min.js"></script>
+    
+    <script>
+    
+    //Fonction récupérant les nouveaux paramètres d'une modification d'un article
+	function modif(id,name,des,recette){
+
+		
+        //On affiche la modal 
+		$("#modifModal").modal();
+		//On modifie l'action du formulaire afin de renvoyer l'ID vers la route
+		$("#modifForm").attr('action','/modif/'+id);
+		
+		
+		//On pré-remplie les anciens paramètres dans les inputs
+		document.getElementById("typeName").value=name;
+		document.getElementById("typeDesc").value=des;
+		document.getElementById("typeR").value=recette;
+		
+	}
+	
+	//Fonction d'écoute pour afficher un ou tous les articles par une checkbox
+	document.getElementById('cboxShowAll').onclick = function() {
+   		if ( this.checked ) {
+			$('.showAll').attr("style", "display: inline !important");
+    		} else {
+        		$('.showAll').attr("style", "display:none");
+    		}
+	};
+	
+	//Fonction récupérant les paramètres d'un article afin d'afficher la recette dans une modal
+	function affichageRecette(name,recette,imgAffichage) {
+		document.getElementById("titreRecette").innerHTML="Recette de "+name;
+		document.getElementById("textRecette").innerHTML=recette;
+		var aID = document.getElementById("afficheImgDiv");
+		aID.style.backgroundImage = "url('/img/upload/"+imgAffichage+"')";
+		aID.style.backgroundSize = "100% 100%";
+		aID.style.backgroundRepeat = "no-repeat";
+		var aID = 0;
+	}
+	
+	//Désactivation du caractère ' pour des raisons techniques
+	jQuery(document).keydown(function(e){
+    if(e.which === 52) {
+        e.preventDefault();
+        return;
+    }
+    console.log(e.which);
+});
+     </script> 
+    
+
+</body>
+
+</html>
